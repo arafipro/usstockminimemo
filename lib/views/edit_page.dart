@@ -14,12 +14,12 @@ class EditPage extends StatelessWidget {
   ) {
     final bool isUpdate = stockmemo != null;
     final nameController = TextEditingController();
-    final codeController = TextEditingController();
+    final tickerController = TextEditingController();
     final memoController = TextEditingController();
 
     if (isUpdate) {
       nameController.text = stockmemo!.name;
-      codeController.text = stockmemo!.code;
+      tickerController.text = stockmemo!.ticker;
       memoController.text = stockmemo!.memo;
     }
 
@@ -51,21 +51,21 @@ class EditPage extends StatelessWidget {
                         height: 8,
                       ),
                       CustomTextFormField(
-                        controller: codeController,
-                        labelText: '証券コード',
-                        hintText: '4桁の半角数字を入力してください',
-                        maxLength: 4,
+                        controller: tickerController,
+                        labelText: 'ティッカー',
+                        hintText: '5文字までの半角英字を入力してください',
+                        maxLength: 5,
                         onChanged: (text) {
-                          model.stockCode = text;
+                          model.stockTicker = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return '証券コードを入力してください';
-                          } else if (!RegExp(r"\d{4}").hasMatch(value)) {
-                            return '４桁の半角数字を入力してください';
+                            return 'ティッカーを入力してください';
+                          // } else if (!RegExp(r"\d{4}").hasMatch(value)) {
+                          //   return '４桁の半角数字を入力してください';
                           }
                         },
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.url,
                       ),
                       CustomTextFormField(
                         controller: nameController,

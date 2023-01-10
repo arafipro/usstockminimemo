@@ -35,7 +35,7 @@ class ListPage extends StatelessWidget {
                         (stockcard) => StockCard(
                           isButtonMode: isButtonMode,
                           stockname: stockcard.name,
-                          code: stockcard.code,
+                          ticker: stockcard.ticker,
                           market: stockcard.market,
                           memo: stockcard.memo,
                           createdAt: stockcard.createdAt,

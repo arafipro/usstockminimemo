@@ -5,7 +5,7 @@ class StockCard extends StatelessWidget {
 isButtonMode：編集・削除の操作をボタンかジェスチャーか変更するためのトリガー引数
 true => ボタン、false => ジェスチャー
 stockname   ：銘柄名
-code        ：証券コード
+ticker        ：証券コード
 market      ：市場
 memo        ：メモ
 createdAt   ：新規日時
@@ -14,7 +14,7 @@ updatedAt   ：更新日時
 
   final bool isButtonMode;
   final String? stockname;
-  final String? code;
+  final String? ticker;
   final String? market;
   final String? memo;
   final dynamic onDeleteChanged;
@@ -26,7 +26,7 @@ updatedAt   ：更新日時
     super.key,
     required this.isButtonMode,
     required this.stockname,
-    required this.code,
+    required this.ticker,
     required this.market,
     required this.memo,
     required this.onDeleteChanged,
@@ -52,7 +52,7 @@ updatedAt   ：更新日時
                 ),
                 sizedBoxWidth8,
                 Text(
-                  '($code)', // 証券コード
+                  '(${ticker!.toUpperCase()})', // ティッカー
                   style: fontSize16,
                 ),
               ],
