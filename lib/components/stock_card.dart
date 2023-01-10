@@ -104,7 +104,7 @@ updatedAt   ：更新日時
                       ),
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
+                          backgroundColor: Colors.red[700],
                           shape: const StadiumBorder(),
                         ),
                         icon: const Icon(
