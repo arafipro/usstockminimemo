@@ -2,12 +2,12 @@ import 'package:usstockminimemo/constants/imports.dart';
 import 'package:intl/intl.dart';
 
 class EditModel extends ChangeNotifier {
-  List<String> markets = ["東証プライム", "東証スタンダード", "東証グロース", "その他"];
-  String _dropdownValue = "東証プライム";
+  List<String> markets = ["NYSE", "NASDAQ"];
+  String _dropdownValue = "NYSE";
   String get dropdownValue => _dropdownValue;
 
   String stockName = '';
-  String stockCode = '';
+  String stockTicker = '';
   String stockMarket = '';
   String stockMemo = '';
   // datetime型をDateFormatで日時のフォーマットを整える
@@ -37,7 +37,7 @@ class EditModel extends ChangeNotifier {
   Future addMemo() async {
     StockMemo newMemo = StockMemo(
       stockName,
-      stockCode,
+      stockTicker,
       // stockMarketはdropdownmenuの選択された値を代入
       stockMarket = _dropdownValue,
       stockMemo,
@@ -53,9 +53,9 @@ class EditModel extends ChangeNotifier {
     if (stockName.isEmpty) {
       stockName = memo.name;
     }
-    // stockCodeが変更されない場合は元の値を代入
-    if (stockCode.isEmpty) {
-      stockCode = memo.code;
+    // stockTickerが変更されない場合は元の値を代入
+    if (stockTicker.isEmpty) {
+      stockTicker = memo.ticker;
     }
     // stockMarketが変更されない場合は元の値を代入
     if (stockMarket.isEmpty) {
@@ -69,7 +69,7 @@ class EditModel extends ChangeNotifier {
     StockMemo changeMemo = StockMemo.withId(
       memo.id,
       stockName,
-      stockCode,
+      stockTicker,
       stockMarket,
       stockMemo,
       // 新規登録以降は登録日時を変更することはないので元の価を代入

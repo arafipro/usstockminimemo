@@ -7,8 +7,8 @@ class DatabaseHelper {
   String memoTable = 'memo_table'; // テーブル名
   String colId = 'id'; // KEY
   String colName = 'name'; // 銘柄名
-  String colCode = 'code'; // 証券コード
-  String colmarket = 'market'; // 市場
+  String colTicker = 'ticker'; // 証券コード
+  String colMarket = 'market'; // 市場
   String colMemo = 'memo'; // メモ
   String colCreatedAt = 'createdAt'; // 登録日時
   String colUpdatedAt = 'updatedAt'; // 更新日時
@@ -39,7 +39,7 @@ class DatabaseHelper {
   Future<Database> initializeDatabase() async {
     // Get the directory path for both Android and iOS to store database.
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = '${directory.path}/stockmemos.db';
+    String path = '${directory.path}/usstockmemos.db';
 
     // Open/create the database at a given path
     return memosDatabase =
@@ -50,9 +50,9 @@ class DatabaseHelper {
     // sql文は大文字ではなく小文字で記述しないとエラーになるよう（なぜかはわからない）
     await db.execute(
         """CREATE TABLE $memoTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colName TEXT,
-          $colCode TEXT, $colmarket TEXT, $colMemo TEXT, $colCreatedAt TIMESTAMP, $colUpdatedAt TIMESTAMP)""");
+          $colTicker TEXT, $colMarket TEXT, $colMemo TEXT, $colCreatedAt TIMESTAMP, $colUpdatedAt TIMESTAMP)""");
     // """CREATE TABLE $memoTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colName TEXT,
-    //   $colCode TEXT, $colmarket TEXT, $colMemo TEXT)""");
+    //   $colTicker TEXT, $colMarket TEXT, $colMemo TEXT)""");
   }
 
   // void _upgradeDb(Database db, int oldVersion, int newVersion) async {
