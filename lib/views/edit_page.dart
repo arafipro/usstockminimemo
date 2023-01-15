@@ -61,8 +61,8 @@ class EditPage extends StatelessWidget {
                         validator: (value) {
                           if (value.isEmpty) {
                             return 'ティッカーを入力してください';
-                          // } else if (!RegExp(r"\d{4}").hasMatch(value)) {
-                          //   return '４桁の半角数字を入力してください';
+                          } else if (!RegExp(r"^[a-zA-Z]{1,5}$").hasMatch(value)) {
+                            return '5文字までの半角英字を入力してください';
                           }
                         },
                         keyboardType: TextInputType.url,
