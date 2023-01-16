@@ -42,7 +42,7 @@ class EditPage extends StatelessWidget {
           ) =>
               Column(
             children: [
-              // AdBanner(),
+              AdBanner(),
               Expanded(
                 child: Form(
                   key: _key,
