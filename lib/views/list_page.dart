@@ -32,43 +32,48 @@ class ListPage extends StatelessWidget {
                   final stockmemos = model.stockmemos;
                   final stockcards = stockmemos
                       .map(
-                        (stockcard) => StockCard(
-                          isButtonMode: isButtonMode,
-                          stockname: stockcard.name,
-                          ticker: stockcard.ticker,
-                          market: stockcard.market,
-                          memo: stockcard.memo,
-                          createdAt: stockcard.createdAt,
-                          updatedAt: stockcard.updatedAt,
-                          onDeleteChanged: () async {
-                            await showDialog(
-                              context: context,
-                              builder: (
-                                BuildContext context,
-                              ) {
-                                return CustomAlertDialog(
-                                  title: "${stockcard.name}を削除しますか？",
-                                  buttonText: "OK",
-                                  onPressed: () async {
-                                    Navigator.of(context).pop();
-                                    await model.deleteMemo(stockcard);
-                                    await model.fetchMemos();
-                                  },
-                                );
-                              },
-                            );
-                          },
-                          onEditChanged: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EditPage(
-                                  stockmemo: stockcard,
+                        (stockcard) => Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 4.0,
+                          ),
+                          child: StockCard(
+                            isButtonMode: isButtonMode,
+                            stockname: stockcard.name,
+                            ticker: stockcard.ticker,
+                            market: stockcard.market,
+                            memo: stockcard.memo,
+                            createdAt: stockcard.createdAt,
+                            updatedAt: stockcard.updatedAt,
+                            onDeleteChanged: () async {
+                              await showDialog(
+                                context: context,
+                                builder: (
+                                  BuildContext context,
+                                ) {
+                                  return CustomAlertDialog(
+                                    title: "${stockcard.name}を削除しますか？",
+                                    buttonText: "OK",
+                                    onPressed: () async {
+                                      Navigator.of(context).pop();
+                                      await model.deleteMemo(stockcard);
+                                      await model.fetchMemos();
+                                    },
+                                  );
+                                },
+                              );
+                            },
+                            onEditChanged: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EditPage(
+                                    stockmemo: stockcard,
+                                  ),
+                                  fullscreenDialog: true,
                                 ),
-                                fullscreenDialog: true,
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       )
                       .toList();
