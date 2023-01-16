@@ -35,7 +35,7 @@ keyboardType：入力
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: TextFormField(
         autofocus: true,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -44,10 +44,22 @@ keyboardType：入力
         maxLength: maxLength,
         keyboardType: keyboardType,
         decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
           hintText: hintText,
           labelText: labelText,
+          labelStyle: const TextStyle(
+            color: appBarColor,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+            borderSide: const BorderSide(
+              color: appBarColor,
+              width: 3.0,
+            ),
           ),
         ),
         onChanged: onChanged,

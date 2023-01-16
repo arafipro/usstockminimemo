@@ -26,6 +26,7 @@ class EditPage extends StatelessWidget {
     return ChangeNotifierProvider<EditModel>(
       create: (_) => EditModel(),
       child: Scaffold(
+        backgroundColor: bgColor,
         appBar: AppBar(
           backgroundColor: appBarColor,
           title: Text(
@@ -61,7 +62,8 @@ class EditPage extends StatelessWidget {
                         validator: (value) {
                           if (value.isEmpty) {
                             return 'ティッカーを入力してください';
-                          } else if (!RegExp(r"^[a-zA-Z]{1,5}$").hasMatch(value)) {
+                          } else if (!RegExp(r"^[a-zA-Z]{1,5}$")
+                              .hasMatch(value)) {
                             return '5文字までの半角英字を入力してください';
                           }
                         },
@@ -132,7 +134,7 @@ class EditPage extends StatelessWidget {
                         keyboardType: TextInputType.multiline,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
