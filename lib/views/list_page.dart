@@ -21,7 +21,7 @@ class ListPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            // AdBanner(),
+            AdBanner(),
             Expanded(
               child: Consumer<ListModel>(
                 builder: (
