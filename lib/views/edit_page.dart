@@ -42,7 +42,7 @@ class EditPage extends StatelessWidget {
           ) =>
               Column(
             children: [
-              AdBanner(),
+              // AdBanner(),
               Expanded(
                 child: Form(
                   key: _key,
@@ -180,18 +180,18 @@ class EditPage extends StatelessWidget {
           builder: (context) => const ListPage(),
         ),
       );
-      await model.addMemo();
-      await showDialog(
+      final dialogResult = showDialog(
         context: context,
         builder: (
           BuildContext context,
-        ) {
-          return const CustomAlertDialog(
-            title: '保存しました',
-            buttonText: 'OK',
-          );
-        },
+        ) =>
+            const CustomAlertDialog(
+          title: '保存しました',
+          buttonText: 'OK',
+        ),
       );
+      await model.addMemo();
+      await dialogResult;
       await navigator;
     } catch (e) {
       showDialog(
@@ -219,8 +219,7 @@ class EditPage extends StatelessWidget {
           builder: (context) => const ListPage(),
         ),
       );
-      await model.updateMemo(stockmemo!);
-      await showDialog(
+      final dialogResult = showDialog(
         context: context,
         builder: (
           BuildContext context,
@@ -231,6 +230,8 @@ class EditPage extends StatelessWidget {
           );
         },
       );
+      await model.updateMemo(stockmemo!);
+      await dialogResult;
       await navigator;
     } catch (e) {
       showDialog(
