@@ -33,6 +33,21 @@ class EditPage extends StatelessWidget {
             isUpdate ? '$appNameShort - 編集' : '$appNameShort - 新規作成',
             style: titleTextStyle20,
           ),
+          leading: IconButton(
+            icon: const Icon(Icons.list_sharp),
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (
+                    context,
+                  ) =>
+                      const ListPage(),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
+          ),
         ),
         body: Consumer<EditModel>(
           builder: (
@@ -42,7 +57,7 @@ class EditPage extends StatelessWidget {
           ) =>
               Column(
             children: [
-              // AdBanner(),
+              AdBanner(),
               Expanded(
                 child: Form(
                   key: _key,
