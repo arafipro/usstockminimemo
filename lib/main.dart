@@ -10,7 +10,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SettingsModel>(
@@ -33,6 +32,7 @@ class MyApp extends StatelessWidget {
             SettingsModel model,
             Widget? child,
           ) =>
+          // 起動時にオープニング画面を表示
               FutureBuilder(
             future: Future.delayed(
               const Duration(milliseconds: 500),

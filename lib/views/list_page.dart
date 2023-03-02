@@ -18,6 +18,7 @@ class ListPage extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.settings),
               onPressed: () async {
+                // 画面遷移の動きを変更
                 Navigator.of(context).push(
                   PageRouteBuilder(
                     pageBuilder: (
