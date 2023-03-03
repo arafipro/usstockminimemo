@@ -1,4 +1,4 @@
-import 'package:usstockminimemo/constants/imports.dart';
+import "package:usstockminimemo/constants/imports.dart";
 
 class StockCard extends StatelessWidget {
 /*　引数の詳細
@@ -52,7 +52,7 @@ updatedAt   ：更新日時
                 ),
                 sizedBoxWidth8,
                 Text(
-                  '(${ticker!.toUpperCase()})', // ティッカー
+                  "(${ticker!.toUpperCase()})", // ティッカー
                   style: fontSize16,
                 ),
               ],
@@ -75,11 +75,11 @@ updatedAt   ：更新日時
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  '登録日時:$createdAt',
+                  "登録日時:$createdAt",
                   style: fontSize14,
                 ),
                 Text(
-                  '更新日時:$updatedAt',
+                  "更新日時:$updatedAt",
                   style: fontSize14,
                 ),
               ],
@@ -97,7 +97,7 @@ updatedAt   ：更新日時
                           Icons.edit,
                         ),
                         label: const Text(
-                          '編集',
+                          "編集",
                           style: titleTextStyle16,
                         ),
                         onPressed: onEditChanged,
@@ -111,7 +111,7 @@ updatedAt   ：更新日時
                           Icons.delete,
                         ),
                         label: const Text(
-                          '削除',
+                          "削除",
                           style: titleTextStyle16,
                         ),
                         onPressed: onDeleteChanged,

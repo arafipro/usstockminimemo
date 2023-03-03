@@ -1,4 +1,4 @@
-import 'package:usstockminimemo/constants/imports.dart';
+import "package:usstockminimemo/constants/imports.dart";
 
 const sizedBoxHeight8 = SizedBox(
   height: 8,

@@ -1,4 +1,4 @@
-import 'package:usstockminimemo/constants/imports.dart';
+import "package:usstockminimemo/constants/imports.dart";
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -25,8 +25,8 @@ class SettingsPage extends StatelessWidget {
               ListView(
             children: [
               ListTile(
-                title: const Text('いきなり入力'),
-                subtitle: const Text('起動時に新規登録を表示する'),
+                title: const Text("いきなり入力"),
+                subtitle: const Text("起動時に新規登録を表示する"),
                 trailing: Switch(
                   value: model.startEditPage,
                   onChanged: (value) => model.setStartEditPage(value),

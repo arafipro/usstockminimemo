@@ -1,19 +1,19 @@
-import 'package:usstockminimemo/constants/imports.dart';
-import 'package:intl/intl.dart';
+import "package:usstockminimemo/constants/imports.dart";
+import "package:intl/intl.dart";
 
 class EditModel extends ChangeNotifier {
   List<String> markets = ["NYSE", "NASDAQ"];
   String _dropdownValue = "NYSE";
   String get dropdownValue => _dropdownValue;
 
-  String stockName = '';
-  String stockTicker = '';
-  String stockMarket = '';
-  String stockMemo = '';
+  String stockName = "";
+  String stockTicker = "";
+  String stockMarket = "";
+  String stockMemo = "";
   // datetime型をDateFormatで日時のフォーマットを整える
   String stockCreatedAt =
-      DateFormat('yyyy/MM/dd HH:mm').format(DateTime.now()).toString();
-  String stockUpdatedAt = '';
+      DateFormat("yyyy/MM/dd HH:mm").format(DateTime.now()).toString();
+  String stockUpdatedAt = "";
 
   bool isLoading = false;
 
@@ -76,13 +76,13 @@ class EditModel extends ChangeNotifier {
       stockCreatedAt = memo.createdAt,
       // datetime型をDateFormatで日時のフォーマットを整える
       stockUpdatedAt =
-          DateFormat('yyyy/MM/dd HH:mm').format(DateTime.now()).toString(),
+          DateFormat("yyyy/MM/dd HH:mm").format(DateTime.now()).toString(),
     );
 
     if (memo.id != null) {
       await dbhelp.updateMemo(changeMemo);
     } else {
-      throw ('IDなし');
+      throw ("IDなし");
     }
   }
 }

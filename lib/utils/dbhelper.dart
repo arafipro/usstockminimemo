@@ -1,17 +1,17 @@
-import 'package:usstockminimemo/constants/imports.dart';
+import "package:usstockminimemo/constants/imports.dart";
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper; // Singleton DatabaseHelper
   static Database? _database, memosDatabase; // Singleton Database
 
-  String memoTable = 'memo_table'; // テーブル名
-  String colId = 'id'; // KEY
-  String colName = 'name'; // 銘柄名
-  String colTicker = 'ticker'; // 証券コード
-  String colMarket = 'market'; // 市場
-  String colMemo = 'memo'; // メモ
-  String colCreatedAt = 'createdAt'; // 登録日時
-  String colUpdatedAt = 'updatedAt'; // 更新日時
+  String memoTable = "memo_table"; // テーブル名
+  String colId = "id"; // KEY
+  String colName = "name"; // 銘柄名
+  String colTicker = "ticker"; // 証券コード
+  String colMarket = "market"; // 市場
+  String colMemo = "memo"; // メモ
+  String colCreatedAt = "createdAt"; // 登録日時
+  String colUpdatedAt = "updatedAt"; // 更新日時
 
   DatabaseHelper._createInstance();
   // Named constructor to create instance of DatabaseHelper
@@ -39,7 +39,7 @@ class DatabaseHelper {
   Future<Database> initializeDatabase() async {
     // Get the directory path for both Android and iOS to store database.
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = '${directory.path}/usstockmemos.db';
+    String path = "${directory.path}/usstockmemos.db";
 
     // Open/create the database at a given path
     return memosDatabase =
@@ -73,7 +73,7 @@ class DatabaseHelper {
     Database db = await database;
     var result =
         // await db.rawQuery('select * from $memoTable order by $colRecordedAt asc');
-        await db.rawQuery('select * from $memoTable');
+        await db.rawQuery("select * from $memoTable");
     return result;
   }
 
@@ -88,7 +88,7 @@ class DatabaseHelper {
   Future<int> updateMemo(StockMemo memo) async {
     var db = await database;
     var result = await db.update(memoTable, memo.toMap(),
-        where: '$colId = ?', whereArgs: [memo.id]);
+        where: "$colId = ?", whereArgs: [memo.id]);
     return result;
   }
 
@@ -97,7 +97,7 @@ class DatabaseHelper {
     var db = await database;
     int result =
         // await db.rawDelete('delete from $memoTable where $colId = $id');
-        await db.delete(memoTable, where: '$colId = ?', whereArgs: [id]);
+        await db.delete(memoTable, where: "$colId = ?", whereArgs: [id]);
     return result;
   }
 

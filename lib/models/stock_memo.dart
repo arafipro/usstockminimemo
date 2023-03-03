@@ -29,25 +29,25 @@ class StockMemo {
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
     if (id != null) {
-      map['id'] = id;
+      map["id"] = id;
     }
-    map['name'] = name;
-    map['ticker'] = ticker;
-    map['market'] = market;
-    map['memo'] = memo;
-    map['createdAt'] = createdAt;
-    map['updatedAt'] = updatedAt;
+    map["name"] = name;
+    map["ticker"] = ticker;
+    map["market"] = market;
+    map["memo"] = memo;
+    map["createdAt"] = createdAt;
+    map["updatedAt"] = updatedAt;
 
     return map;
   }
 
   StockMemo.fromMapObject(Map<String, dynamic> map) {
-    id = map['id'];
-    name = map['name'];
-    ticker = map['ticker'];
-    market = map['market'];
-    memo = map['memo'];
-    createdAt = map['createdAt'];
-    updatedAt = map['updatedAt'];
+    id = map["id"];
+    name = map["name"];
+    ticker = map["ticker"];
+    market = map["market"];
+    memo = map["memo"];
+    createdAt = map["createdAt"];
+    updatedAt = map["updatedAt"];
   }
 }

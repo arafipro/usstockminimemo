@@ -1,4 +1,4 @@
-import 'package:usstockminimemo/constants/imports.dart';
+import "package:usstockminimemo/constants/imports.dart";
 
 class ListPage extends StatelessWidget {
   const ListPage({
@@ -145,7 +145,7 @@ class ListPage extends StatelessWidget {
             );
           },
           label: const Text(
-            '新規登録',
+            "新規登録",
             style: titleTextStyle16,
           ),
           icon: const Icon(Icons.add),
