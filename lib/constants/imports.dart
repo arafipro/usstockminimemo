@@ -12,6 +12,7 @@ export "package:google_mobile_ads/google_mobile_ads.dart";
 export "package:path_provider/path_provider.dart";
 export "package:sqflite/sqflite.dart";
 export "package:shared_preferences/shared_preferences.dart";
+export "package:package_info_plus/package_info_plus.dart";
 
 // components
 export "package:usstockminimemo/components/adbanner.dart";
