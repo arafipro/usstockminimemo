@@ -35,6 +35,6 @@ const fontSize16 = TextStyle(
   fontSize: 16,
 );
 
-const fontSize14 = TextStyle(
-  fontSize: 14,
+const fontSize13 = TextStyle(
+  fontSize: 13,
 );

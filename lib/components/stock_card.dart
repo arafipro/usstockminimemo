@@ -53,14 +53,14 @@ updatedAt   ：更新日時
                 sizedBoxWidth8,
                 Text(
                   "(${ticker!.toUpperCase()})", // ティッカー
-                  style: fontSize16,
+                  style: fontSize18,
                 ),
               ],
             ),
             sizedBoxHeight8,
             Text(
               market!, // 市場
-              style: fontSize14,
+              style: fontSize16,
             ),
             sizedBoxHeight8,
             Padding(
@@ -76,11 +76,11 @@ updatedAt   ：更新日時
               children: [
                 Text(
                   "${AppLocalizations.of(context)!.createdAt}:$createdAt",
-                  style: fontSize14,
+                  style: fontSize13,
                 ),
                 Text(
                   "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
-                  style: fontSize14,
+                  style: fontSize13,
                 ),
               ],
             ),
