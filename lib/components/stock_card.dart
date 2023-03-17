@@ -75,11 +75,11 @@ updatedAt   ：更新日時
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  "登録日時:$createdAt",
+                  "${AppLocalizations.of(context)!.createdAt}:$createdAt",
                   style: fontSize14,
                 ),
                 Text(
-                  "更新日時:$updatedAt",
+                  "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
                   style: fontSize14,
                 ),
               ],
@@ -96,9 +96,9 @@ updatedAt   ：更新日時
                         icon: const Icon(
                           Icons.edit,
                         ),
-                        label: const Text(
-                          "編集",
-                          style: titleTextStyle16,
+                        label: Text(
+                          AppLocalizations.of(context)!.edit,
+                          style: buttonTextStyle16,
                         ),
                         onPressed: onEditChanged,
                       ),
@@ -110,9 +110,9 @@ updatedAt   ：更新日時
                         icon: const Icon(
                           Icons.delete,
                         ),
-                        label: const Text(
-                          "削除",
-                          style: titleTextStyle16,
+                        label: Text(
+                          AppLocalizations.of(context)!.delete,
+                          style: buttonTextStyle16,
                         ),
                         onPressed: onDeleteChanged,
                       ),

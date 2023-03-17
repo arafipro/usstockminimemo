@@ -5,11 +5,11 @@ class LoadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: bgColor,
       body: Center(
         child: Text(
-          appName,
+          AppLocalizations.of(context)!.appName,
           style: loadTextStyle,
         ),
       ),

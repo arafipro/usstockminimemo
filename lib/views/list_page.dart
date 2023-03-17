@@ -56,8 +56,8 @@ class ListPage extends StatelessWidget {
             ),
           ],
 
-          title: const Text(
-            appName,
+          title: Text(
+            AppLocalizations.of(context)!.appName,
             style: titleTextStyle20,
           ),
         ),
@@ -93,7 +93,7 @@ class ListPage extends StatelessWidget {
                                   BuildContext context,
                                 ) {
                                   return CustomAlertDialog(
-                                    title: "${stockcard.name}を削除しますか？",
+                                    title: AppLocalizations.of(context)!.checkDelete,
                                     buttonText: "OK",
                                     onPressed: () async {
                                       Navigator.of(context).pop();
@@ -144,9 +144,9 @@ class ListPage extends StatelessWidget {
               ),
             );
           },
-          label: const Text(
-            "新規登録",
-            style: titleTextStyle16,
+          label: Text(
+            AppLocalizations.of(context)!.newMemo,
+            style: buttonTextStyle16,
           ),
           icon: const Icon(Icons.add),
         ),

@@ -30,7 +30,9 @@ class EditPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: appBarColor,
           title: Text(
-            isUpdate ? "$appNameShort - 編集" : "$appNameShort - 新規作成",
+            isUpdate
+                ? AppLocalizations.of(context)!.edit
+                : AppLocalizations.of(context)!.create,
             style: titleTextStyle20,
           ),
           leading: IconButton(
@@ -68,31 +70,32 @@ class EditPage extends StatelessWidget {
                       ),
                       CustomTextFormField(
                         controller: tickerController,
-                        labelText: "ティッカー",
-                        hintText: "5文字までの半角英字を入力してください",
+                        labelText: AppLocalizations.of(context)!.tickerLabel,
+                        hintText: AppLocalizations.of(context)!.tickerRuleText,
                         maxLength: 5,
                         onChanged: (text) {
                           model.stockTicker = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "ティッカーを入力してください";
+                            return AppLocalizations.of(context)!.tickerHintText;
                           } else if (!RegExp(r"^[a-zA-Z]{1,5}$")
                               .hasMatch(value)) {
-                            return "5文字までの半角英字を入力してください";
+                            return AppLocalizations.of(context)!.tickerRuleText;
                           }
                         },
                         keyboardType: TextInputType.url,
                       ),
                       CustomTextFormField(
                         controller: nameController,
-                        labelText: "銘柄名",
+                        labelText: AppLocalizations.of(context)!.stockNameLabel,
                         onChanged: (text) {
                           model.stockName = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "銘柄名を入力してください";
+                            return AppLocalizations.of(context)!
+                                .stockNameHintText;
                           }
                         },
                         keyboardType: TextInputType.text,
@@ -101,9 +104,9 @@ class EditPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ListTile(
-                            title: const Text(
-                              "市場",
-                              style: TextStyle(
+                            title: Text(
+                              AppLocalizations.of(context)!.marketLabel,
+                              style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w300,
                               ),
@@ -136,14 +139,14 @@ class EditPage extends StatelessWidget {
                       ),
                       CustomTextFormField(
                         controller: memoController,
-                        labelText: "メモ",
+                        labelText: AppLocalizations.of(context)!.memoLabel,
                         maxLines: 10,
                         onChanged: (text) {
                           model.stockMemo = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "メモを入力してください";
+                            return AppLocalizations.of(context)!.memoHintText;
                           }
                         },
                         keyboardType: TextInputType.multiline,
@@ -168,8 +171,10 @@ class EditPage extends StatelessWidget {
                             model.endLoading();
                           },
                           child: Text(
-                            isUpdate ? "編集完了" : "保存",
-                            style: titleTextStyle20,
+                            isUpdate
+                                ? AppLocalizations.of(context)!.done
+                                : AppLocalizations.of(context)!.save,
+                            style: buttonTextStyle20,
                           ),
                         ),
                       )
@@ -200,8 +205,8 @@ class EditPage extends StatelessWidget {
         builder: (
           BuildContext context,
         ) =>
-            const CustomAlertDialog(
-          title: "保存しました",
+            CustomAlertDialog(
+          title: AppLocalizations.of(context)!.saved,
           buttonText: "OK",
         ),
       );
@@ -239,8 +244,8 @@ class EditPage extends StatelessWidget {
         builder: (
           BuildContext context,
         ) {
-          return const CustomAlertDialog(
-            title: "変更しました",
+          return CustomAlertDialog(
+            title: AppLocalizations.of(context)!.updated,
             buttonText: "OK",
           );
         },

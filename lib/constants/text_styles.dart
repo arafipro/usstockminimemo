@@ -3,7 +3,21 @@ import "package:usstockminimemo/constants/imports.dart";
 const loadTextStyle = TextStyle(
   color: appBarColor,
   fontWeight: FontWeight.bold,
-  fontSize: 28,
+  fontSize: 20,
+  // letterSpacing: 3,
+);
+
+const buttonTextStyle20 = TextStyle(
+  color: textColor,
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+  letterSpacing: 3,
+);
+
+const buttonTextStyle16 = TextStyle(
+  color: textColor,
+  fontWeight: FontWeight.bold,
+  fontSize: 16,
   letterSpacing: 3,
 );
 
@@ -11,14 +25,6 @@ const titleTextStyle20 = TextStyle(
   color: textColor,
   fontWeight: FontWeight.bold,
   fontSize: 20,
-  letterSpacing: 3,
-);
-
-const titleTextStyle16 = TextStyle(
-  color: textColor,
-  fontWeight: FontWeight.bold,
-  fontSize: 16,
-  letterSpacing: 3,
 );
 
 const fontSize18 = TextStyle(
