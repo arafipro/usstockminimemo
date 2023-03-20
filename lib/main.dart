@@ -19,12 +19,20 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         // Delegate には、flutter_localizations 標準のものだけを設定
         localizationsDelegates: const [
+          AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale("ja", "JP"), // Japanese
+          Locale(
+            "ja",
+            // "",
+          ), // Japanese
+          Locale(
+            "en",
+            // "",
+          ), // English
         ],
         home: Consumer(
           builder: (
@@ -32,10 +40,12 @@ class MyApp extends StatelessWidget {
             SettingsModel model,
             Widget? child,
           ) =>
-          // 起動時にオープニング画面を表示
+              // 起動時にオープニング画面を表示
               FutureBuilder(
             future: Future.delayed(
-              const Duration(milliseconds: 500),
+              const Duration(
+                milliseconds: 500,
+              ),
             ),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {

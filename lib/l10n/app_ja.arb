@@ -1,0 +1,41 @@
+{
+  "@@locale":"ja",
+
+  "appName":"米国株ひとこと投資メモ",
+  "appNameShort":"投資メモ",
+
+	"newMemo":"新規登録",
+	"create":"新規作成",
+	"edit":"編集",
+	"delete":"削除",
+
+	"done":"編集完了",
+	"save":"保存",
+
+	"createdAt":"登録日時",
+	"updatedAt":"更新日時",
+
+	"saved":"保存しました",
+	"updated":"変更しました",
+	"checkDelete":"削除しますか？",
+	"deleted":"削除しました",
+
+	"tickerLabel":"ティッカー",
+	"tickerRuleText":"5文字までの半角英字を入力してください",
+	"tickerHintText":"ティッカーを入力してください",
+
+	"stockNameLabel":"銘柄名",
+	"stockNameHintText":"銘柄名を入力してください",
+
+	"marketLabel":"市場",
+
+	"memoLabel":"メモ",
+	"memoHintText":"メモを入力してください",
+
+	"settings":"設定",
+
+	"version":"アプリバージョン",
+
+	"startupTitle":"いきなり入力",
+	"startupSubTitle":"起動時に新規登録を表示する"
+}

@@ -5,6 +5,7 @@ class SettingsPage extends StatelessWidget {
   Future<PackageInfo> _getPackageInfo() {
     return PackageInfo.fromPlatform();
   }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SettingsModel>(
@@ -14,8 +15,8 @@ class SettingsPage extends StatelessWidget {
         backgroundColor: bgColor,
         appBar: AppBar(
           backgroundColor: appBarColor,
-          title: const Text(
-            "設定",
+          title: Text(
+            AppLocalizations.of(context)!.settings,
             style: titleTextStyle20,
           ),
         ),
@@ -28,8 +29,12 @@ class SettingsPage extends StatelessWidget {
               ListView(
             children: [
               ListTile(
-                title: const Text("いきなり入力"),
-                subtitle: const Text("起動時に新規登録を表示する"),
+                title: Text(
+                  AppLocalizations.of(context)!.startupTitle,
+                ),
+                subtitle: Text(
+                  AppLocalizations.of(context)!.startupSubTitle,
+                ),
                 trailing: Switch(
                   value: model.startEditPage,
                   onChanged: (value) => model.setStartEditPage(value),
@@ -48,7 +53,7 @@ class SettingsPage extends StatelessWidget {
                     }
                     final data = snapshot.data!;
                     return ListTile(
-                      title: const Text("アプリバージョン"),
+                      title: Text(AppLocalizations.of(context)!.version),
                       subtitle: Text(data.version),
                     );
                   }),

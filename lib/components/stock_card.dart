@@ -53,14 +53,14 @@ updatedAt   ：更新日時
                 sizedBoxWidth8,
                 Text(
                   "(${ticker!.toUpperCase()})", // ティッカー
-                  style: fontSize16,
+                  style: fontSize18,
                 ),
               ],
             ),
             sizedBoxHeight8,
             Text(
               market!, // 市場
-              style: fontSize14,
+              style: fontSize16,
             ),
             sizedBoxHeight8,
             Padding(
@@ -75,12 +75,12 @@ updatedAt   ：更新日時
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  "登録日時:$createdAt",
-                  style: fontSize14,
+                  "${AppLocalizations.of(context)!.createdAt}:$createdAt",
+                  style: fontSize13,
                 ),
                 Text(
-                  "更新日時:$updatedAt",
-                  style: fontSize14,
+                  "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
+                  style: fontSize13,
                 ),
               ],
             ),
@@ -96,9 +96,9 @@ updatedAt   ：更新日時
                         icon: const Icon(
                           Icons.edit,
                         ),
-                        label: const Text(
-                          "編集",
-                          style: titleTextStyle16,
+                        label: Text(
+                          AppLocalizations.of(context)!.edit,
+                          style: buttonTextStyle16,
                         ),
                         onPressed: onEditChanged,
                       ),
@@ -110,9 +110,9 @@ updatedAt   ：更新日時
                         icon: const Icon(
                           Icons.delete,
                         ),
-                        label: const Text(
-                          "削除",
-                          style: titleTextStyle16,
+                        label: Text(
+                          AppLocalizations.of(context)!.delete,
+                          style: buttonTextStyle16,
                         ),
                         onPressed: onDeleteChanged,
                       ),

@@ -1,0 +1,41 @@
+{
+  "@@locale":"en",
+
+  "appName":"stocks investment short note",
+  "appNameShort":"investment note",
+
+	"newMemo":"New note",
+	"create":"Create New",
+	"edit":"Edit",
+	"delete":"Delete",
+
+	"done":"Done",
+	"save":"Save",
+
+	"createdAt":"create date",
+	"updatedAt":"update date",
+
+	"saved":"Saved",
+	"updated":"Changed",
+	"checkDelete":"Do you want to delete?",
+	"deleted":"Deleted",
+
+	"tickerLabel":"Ticker",
+	"tickerRuleText":"Please enter 5 alphabetic characters",
+	"tickerHintText":"Please enter a ticker",
+
+	"stockNameLabel":"Stock Name",
+	"stockNameHintText":"Please enter the stock name",
+
+	"marketLabel":"Market",
+
+	"memoLabel":"Note",
+	"memoHintText":"Please enter a note",
+
+	"settings":"Settings",
+
+	"version":"Application Version",
+
+	"startupTitle":"Suddenly Input",
+	"startupSubTitle":"Enter a note immediately after startup"
+}
