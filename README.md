@@ -13,3 +13,9 @@
 |v1.1.0|2023.02.28|いきなり入力機能を追加|
 |v1.1.1|2023.03.06|設定画面でアプリのバージョンを確認可能に|
 |v1.1.2|2023.03.17|多言語対応して英語にも対応|
+
+### ダウンロード
+
+[Android版(Google Play)はこちら](https://play.google.com/store/apps/details?id=com.arafipro.usstockminimemo&pli=1)
+
+[iPhone版(App Store)はこちら](https://apps.apple.com/ja/app/id1666797046)
