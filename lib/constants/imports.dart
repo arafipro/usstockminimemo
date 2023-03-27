@@ -13,6 +13,7 @@ export "package:path_provider/path_provider.dart";
 export "package:sqflite/sqflite.dart";
 export "package:shared_preferences/shared_preferences.dart";
 export "package:package_info_plus/package_info_plus.dart";
+export "package:flutter_dotenv/flutter_dotenv.dart";
 
 // localizations
 export "package:flutter_gen/gen_l10n/app_localizations.dart";

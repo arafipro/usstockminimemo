@@ -3,6 +3,8 @@ import "package:usstockminimemo/constants/imports.dart";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
+  // .envを読み込めるように設定.
+  await dotenv.load(fileName: ".env");
   runApp(
     const MyApp(),
   );
