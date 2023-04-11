@@ -41,7 +41,20 @@ class SettingsPage extends StatelessWidget {
                   onChanged: (value) => model.setStartEditPage(value),
                 ),
               ),
-              // todo ListPageとGridPageの切り替えるスイッチを追加
+              const ListTile(
+                // todo 多言語化の設定
+                title: Text("ListPageとGridPageの切り替え"
+                    // AppLocalizations.of(context)!.startupTitle,
+                    ),
+                subtitle: Text("ListPageとGridPageの切り替えます"
+                    // AppLocalizations.of(context)!.startupSubTitle,
+                    ),
+                trailing: Switch(
+                  // todo valueとonChangedの設定
+                  value: true,
+                  onChanged: null,
+                ),
+              ),
               FutureBuilder<PackageInfo>(
                 future: _getPackageInfo(),
                 builder: (
