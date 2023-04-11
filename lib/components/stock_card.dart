@@ -37,89 +37,93 @@ updatedAt   ：更新日時
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Center(
-        widthFactor: 200,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  stockname!, // 銘柄名
-                  style: fontSize18,
-                ),
-                sizedBoxWidth8,
-                Text(
-                  "(${ticker!.toUpperCase()})", // ティッカー
-                  style: fontSize18,
-                ),
-              ],
-            ),
-            sizedBoxHeight8,
-            Text(
-              market!, // 市場
-              style: fontSize16,
-            ),
-            sizedBoxHeight8,
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(
-                memo!, // メモ
+    return GestureDetector(
+      onLongPress: !isButtonMode ? onDeleteChanged : null, // 長押しで削除
+      onTap: !isButtonMode ? onEditChanged : null, // ダブルクリックで編集
+      child: Card(
+        child: Center(
+          widthFactor: 200,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    stockname!, // 銘柄名
+                    style: fontSize18,
+                  ),
+                  sizedBoxWidth8,
+                  Text(
+                    "(${ticker!.toUpperCase()})", // ティッカー
+                    style: fontSize18,
+                  ),
+                ],
+              ),
+              sizedBoxHeight8,
+              Text(
+                market!, // 市場
                 style: fontSize16,
               ),
-            ),
-            sizedBoxHeight8,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  "${AppLocalizations.of(context)!.createdAt}:$createdAt",
-                  style: fontSize13,
+              sizedBoxHeight8,
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  memo!, // メモ
+                  style: fontSize16,
                 ),
-                Text(
-                  "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
-                  style: fontSize13,
-                ),
-              ],
-            ),
-            isButtonMode
-                ? ButtonBar(
-                    alignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: buttonColor,
-                          shape: const StadiumBorder(),
+              ),
+              sizedBoxHeight8,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "${AppLocalizations.of(context)!.createdAt}:$createdAt",
+                    style: fontSize13,
+                  ),
+                  Text(
+                    "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
+                    style: fontSize13,
+                  ),
+                ],
+              ),
+              isButtonMode
+                  ? ButtonBar(
+                      alignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: buttonColor,
+                            shape: const StadiumBorder(),
+                          ),
+                          icon: const Icon(
+                            Icons.edit,
+                          ),
+                          label: Text(
+                            AppLocalizations.of(context)!.edit,
+                            style: buttonTextStyle16,
+                          ),
+                          onPressed: onEditChanged,
                         ),
-                        icon: const Icon(
-                          Icons.edit,
+                        ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red[700],
+                            shape: const StadiumBorder(),
+                          ),
+                          icon: const Icon(
+                            Icons.delete,
+                          ),
+                          label: Text(
+                            AppLocalizations.of(context)!.delete,
+                            style: buttonTextStyle16,
+                          ),
+                          onPressed: onDeleteChanged,
                         ),
-                        label: Text(
-                          AppLocalizations.of(context)!.edit,
-                          style: buttonTextStyle16,
-                        ),
-                        onPressed: onEditChanged,
-                      ),
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red[700],
-                          shape: const StadiumBorder(),
-                        ),
-                        icon: const Icon(
-                          Icons.delete,
-                        ),
-                        label: Text(
-                          AppLocalizations.of(context)!.delete,
-                          style: buttonTextStyle16,
-                        ),
-                        onPressed: onDeleteChanged,
-                      ),
-                    ],
-                  )
-                : sizedBoxHeight8,
-          ],
+                      ],
+                    )
+                  : sizedBoxHeight8,
+            ],
+          ),
         ),
       ),
     );

@@ -61,7 +61,8 @@ class MyApp extends StatelessWidget {
                       ? EditPage(
                           stockmemo: null,
                         )
-                      : const ListPage(),
+                          // todo ListPageとGridPageを設定によって切り替える
+                      :  const GridPage(), // 動作確認のためGridPage()に変更
                 );
               }
             },

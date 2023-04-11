@@ -197,7 +197,8 @@ class EditPage extends StatelessWidget {
       final navigator = Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ListPage(),
+          // todo ListPageとGridPageを設定によって切り替える
+          builder: (context) => const GridPage(),
         ),
       );
       final dialogResult = showDialog(

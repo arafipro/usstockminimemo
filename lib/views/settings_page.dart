@@ -2,6 +2,7 @@ import "package:usstockminimemo/constants/imports.dart";
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
+  // バージョン情報を取得
   Future<PackageInfo> _getPackageInfo() {
     return PackageInfo.fromPlatform();
   }
@@ -40,23 +41,25 @@ class SettingsPage extends StatelessWidget {
                   onChanged: (value) => model.setStartEditPage(value),
                 ),
               ),
+              // todo ListPageとGridPageの切り替えるスイッチを追加
               FutureBuilder<PackageInfo>(
-                  future: _getPackageInfo(),
-                  builder: (
-                    BuildContext context,
-                    AsyncSnapshot<PackageInfo> snapshot,
-                  ) {
-                    if (snapshot.hasError) {
-                      return const Text("ERROR");
-                    } else if (!snapshot.hasData) {
-                      return const Text("Loading...");
-                    }
-                    final data = snapshot.data!;
-                    return ListTile(
-                      title: Text(AppLocalizations.of(context)!.version),
-                      subtitle: Text(data.version),
-                    );
-                  }),
+                future: _getPackageInfo(),
+                builder: (
+                  BuildContext context,
+                  AsyncSnapshot<PackageInfo> snapshot,
+                ) {
+                  if (snapshot.hasError) {
+                    return const Text("ERROR");
+                  } else if (!snapshot.hasData) {
+                    return const Text("Loading...");
+                  }
+                  final data = snapshot.data!;
+                  return ListTile(
+                    title: Text(AppLocalizations.of(context)!.version),
+                    subtitle: Text(data.version),
+                  );
+                },
+              ),
             ],
           ),
         ),

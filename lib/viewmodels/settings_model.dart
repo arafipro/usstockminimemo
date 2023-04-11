@@ -6,6 +6,8 @@ class SettingsModel with ChangeNotifier {
   // いきなり入力getter
   bool get startEditPage => _startEditPage;
 
+  // todo ListPageとGridPageを切り替える初期値を追加
+
   Future<void> getAllSettings() async {
     final prefs = await SharedPreferences.getInstance();
     // いきなり入力
