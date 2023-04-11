@@ -63,6 +63,7 @@ class ListPage extends StatelessWidget {
           children: [
             AdBanner(),
             Expanded(
+              // ListModelを呼び出し
               child: Consumer<ListModel>(
                 builder: (
                   BuildContext context,

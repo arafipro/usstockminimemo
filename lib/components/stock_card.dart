@@ -5,7 +5,7 @@ class StockCard extends StatelessWidget {
 isButtonMode：編集・削除の操作をボタンかジェスチャーか変更するためのトリガー引数
 true => ボタン、false => ジェスチャー
 stockname   ：銘柄名
-ticker        ：証券コード
+ticker      ：証券コード
 market      ：市場
 memo        ：メモ
 createdAt   ：新規日時
@@ -39,10 +39,9 @@ updatedAt   ：更新日時
   Widget build(BuildContext context) {
     return GestureDetector(
       onLongPress: !isButtonMode ? onDeleteChanged : null, // 長押しで削除
-      onTap: !isButtonMode ? onEditChanged : null, // ダブルクリックで編集
+      onDoubleTap: !isButtonMode ? onEditChanged : null, // ダブルクリックで編集
       child: Card(
         child: Center(
-          widthFactor: 200,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
