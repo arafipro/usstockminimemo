@@ -16,9 +16,31 @@ class SettingsPage extends StatelessWidget {
         backgroundColor: bgColor,
         appBar: AppBar(
           backgroundColor: appBarColor,
+          automaticallyImplyLeading: false, // 戻るボタンを表示しない
           title: Text(
             AppLocalizations.of(context)!.settings,
             style: titleTextStyle20,
+          ),
+          leading: Consumer(
+            builder: (
+              BuildContext context,
+              SettingsModel model,
+              Widget? child,
+            ) =>
+                IconButton(
+              icon: const Icon(Icons.list_sharp),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: !model.startDisplayPage
+                        ? (context) => const ListPage()
+                        : (context) => const GridPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+            ),
           ),
         ),
         body: Consumer(
@@ -41,18 +63,17 @@ class SettingsPage extends StatelessWidget {
                   onChanged: (value) => model.setStartEditPage(value),
                 ),
               ),
-              const ListTile(
+              ListTile(
                 // todo 多言語化の設定
-                title: Text("ListPageとGridPageの切り替え"
+                title: const Text("ListPageとGridPageの切り替え"
                     // AppLocalizations.of(context)!.startupTitle,
                     ),
-                subtitle: Text("ListPageとGridPageの切り替えます"
+                subtitle: const Text("ListPageとGridPageの切り替えます"
                     // AppLocalizations.of(context)!.startupSubTitle,
                     ),
                 trailing: Switch(
-                  // todo valueとonChangedの設定
-                  value: true,
-                  onChanged: null,
+                  value: model.startDisplayPage,
+                  onChanged: (value) => model.setStartDisplayPage(value),
                 ),
               ),
               FutureBuilder<PackageInfo>(
