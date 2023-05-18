@@ -12,8 +12,8 @@ class AdBanner extends StatelessWidget {
     // TEST_ANDROID_ID
     // TEST_IOS_ID
     adUnitId: Platform.isAndroid
-        ? dotenv.get("TEST_ANDROID_ID")
-        : dotenv.get("TEST_IOS_ID"),
+        ? dotenv.get("ANDROID_UNIT_ID")
+        : dotenv.get("IOS_UNIT_ID"),
     size: AdSize.fullBanner,
     request: const AdRequest(),
     listener: BannerAdListener(
@@ -39,7 +39,7 @@ class AdBanner extends StatelessWidget {
     final AdWidget adWidget = AdWidget(ad: myBanner);
     return Container(
       alignment: Alignment.center,
-      width: WidgetsBinding.instance.window.physicalSize.width,
+      width: MediaQuery.of(context).size.width,
       height: myBanner.size.height.toDouble(),
       child: adWidget,
     );

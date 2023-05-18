@@ -79,7 +79,7 @@ class _GridPageState extends State<GridPage> {
           ),
         ],
         title: Text(
-          "${AppLocalizations.of(context)!.appName} G",
+          AppLocalizations.of(context)!.appName,
           style: titleTextStyle20,
         ),
       ),
