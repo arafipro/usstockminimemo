@@ -103,7 +103,7 @@ class _GridPageState extends State<GridPage> {
                       context: context,
                       builder: (BuildContext context) {
                         return CustomAlertDialog(
-                          title: "${stockmemos[index].name}を削除しますか？",
+                          title: AppLocalizations.of(context)!.checkDelete,
                           buttonText: "OK",
                           onPressed: () async {
                             Navigator.of(context).pop();
@@ -125,8 +125,8 @@ class _GridPageState extends State<GridPage> {
                       ),
                     );
                   },
-                  createdAt: null,
-                  updatedAt: null,
+                  createdAt: stockmemos[index].createdAt,
+                  updatedAt: stockmemos[index].updatedAt,
                 ),
               ),
             ),

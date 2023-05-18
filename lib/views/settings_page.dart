@@ -64,13 +64,9 @@ class SettingsPage extends StatelessWidget {
                 ),
               ),
               ListTile(
-                // todo 多言語化の設定
-                title: const Text("ListPageとGridPageの切り替え"
-                    // AppLocalizations.of(context)!.startupTitle,
-                    ),
-                subtitle: const Text("ListPageとGridPageの切り替えます"
-                    // AppLocalizations.of(context)!.startupSubTitle,
-                    ),
+                title: Text(
+                  AppLocalizations.of(context)!.listToGridTitle,
+                ),
                 trailing: Switch(
                   value: model.startDisplayPage,
                   onChanged: (value) => model.setStartDisplayPage(value),

@@ -73,19 +73,33 @@ updatedAt   ：更新日時
                 ),
               ),
               sizedBoxHeight8,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "${AppLocalizations.of(context)!.createdAt}:$createdAt",
-                    style: fontSize13,
-                  ),
-                  Text(
-                    "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
-                    style: fontSize13,
-                  ),
-                ],
-              ),
+              isButtonMode
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "${AppLocalizations.of(context)!.createdAt}:$createdAt",
+                          style: fontSize13,
+                        ),
+                        Text(
+                          "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
+                          style: fontSize13,
+                        ),
+                      ],
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "${AppLocalizations.of(context)!.createdAt}:$createdAt",
+                          style: fontSize13,
+                        ),
+                        Text(
+                          "${AppLocalizations.of(context)!.updatedAt}:$updatedAt",
+                          style: fontSize13,
+                        ),
+                      ],
+                    ),
               isButtonMode
                   ? ButtonBar(
                       alignment: MainAxisAlignment.spaceEvenly,
