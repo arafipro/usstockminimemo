@@ -14,6 +14,7 @@ export "package:sqflite/sqflite.dart";
 export "package:shared_preferences/shared_preferences.dart";
 export "package:package_info_plus/package_info_plus.dart";
 export "package:flutter_dotenv/flutter_dotenv.dart";
+export "package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart";
 
 // localizations
 export "package:flutter_gen/gen_l10n/app_localizations.dart";
@@ -44,5 +45,6 @@ export "package:usstockminimemo/viewmodels/settings_model.dart";
 // views
 export "package:usstockminimemo/views/load_page.dart";
 export "package:usstockminimemo/views/list_page.dart";
+export "package:usstockminimemo/views/grid_page.dart";
 export "package:usstockminimemo/views/edit_page.dart";
 export "package:usstockminimemo/views/settings_page.dart";

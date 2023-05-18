@@ -23,8 +23,15 @@ class EditPage extends StatelessWidget {
       memoController.text = stockmemo!.memo;
     }
 
-    return ChangeNotifierProvider<EditModel>(
-      create: (_) => EditModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<EditModel>(
+          create: (_) => EditModel(),
+        ),
+        ChangeNotifierProvider<SettingsModel>(
+          create: (_) => SettingsModel()..getAllSettings(),
+        ),
+      ],
       child: Scaffold(
         backgroundColor: bgColor,
         appBar: AppBar(
@@ -35,26 +42,34 @@ class EditPage extends StatelessWidget {
                 : AppLocalizations.of(context)!.create,
             style: titleTextStyle20,
           ),
-          leading: IconButton(
-            icon: const Icon(Icons.list_sharp),
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (
-                    context,
-                  ) =>
-                      const ListPage(),
-                  fullscreenDialog: true,
-                ),
-              );
-            },
+          leading: Consumer<SettingsModel>(
+            builder: (
+              BuildContext context,
+              SettingsModel settingsModel,
+              Widget? child,
+            ) =>
+                // 一覧ボタンを設置して設定に対応可能に
+                IconButton(
+              icon: const Icon(Icons.list_sharp),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: !settingsModel.startDisplayPage
+                        ? (context) => const ListPage()
+                        : (context) => const GridPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+            ),
           ),
         ),
+        // EditModelを呼び出し
         body: Consumer<EditModel>(
           builder: (
             BuildContext context,
-            EditModel model,
+            EditModel editModel,
             Widget? child,
           ) =>
               Column(
@@ -74,7 +89,7 @@ class EditPage extends StatelessWidget {
                         hintText: AppLocalizations.of(context)!.tickerRuleText,
                         maxLength: 5,
                         onChanged: (text) {
-                          model.stockTicker = text;
+                          editModel.stockTicker = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
@@ -90,7 +105,7 @@ class EditPage extends StatelessWidget {
                         controller: nameController,
                         labelText: AppLocalizations.of(context)!.stockNameLabel,
                         onChanged: (text) {
-                          model.stockName = text;
+                          editModel.stockName = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
@@ -118,14 +133,14 @@ class EditPage extends StatelessWidget {
                                 color: Colors.black26,
                               ),
                               onChanged: (String? value) {
-                                model.onChanged(value!);
+                                editModel.onChanged(value!);
                                 stockmemo?.market = value;
                               },
                               value: isUpdate
                                   ? stockmemo?.market
-                                  : model.dropdownValue,
-                              items:
-                                  model.markets.map<DropdownMenuItem<String>>(
+                                  : editModel.dropdownValue,
+                              items: editModel.markets
+                                  .map<DropdownMenuItem<String>>(
                                 (String text) {
                                   return DropdownMenuItem<String>(
                                     value: text,
@@ -142,7 +157,7 @@ class EditPage extends StatelessWidget {
                         labelText: AppLocalizations.of(context)!.memoLabel,
                         maxLines: 10,
                         onChanged: (text) {
-                          model.stockMemo = text;
+                          editModel.stockMemo = text;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
@@ -153,28 +168,36 @@ class EditPage extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              buttonColor,
+                        // SettingsModelを呼び出し
+                        child: Consumer<SettingsModel>(
+                          builder: (
+                            BuildContext context,
+                            SettingsModel settingsModel,
+                            Widget? child,
+                          ) =>
+                              ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                buttonColor,
+                              ),
                             ),
-                          ),
-                          onPressed: () async {
-                            model.startLoading();
-                            if (_key.currentState!.validate()) {
-                              if (!isUpdate) {
-                                await addMemo(model, context);
-                              } else {
-                                await updateMemo(model, context);
+                            onPressed: () async {
+                              editModel.startLoading();
+                              if (_key.currentState!.validate()) {
+                                if (!isUpdate) {
+                                  await addMemo(settingsModel, editModel, context);
+                                } else {
+                                  await updateMemo(settingsModel, editModel, context);
+                                }
                               }
-                            }
-                            model.endLoading();
-                          },
-                          child: Text(
-                            isUpdate
-                                ? AppLocalizations.of(context)!.done
-                                : AppLocalizations.of(context)!.save,
-                            style: buttonTextStyle20,
+                              editModel.endLoading();
+                            },
+                            child: Text(
+                              isUpdate
+                                  ? AppLocalizations.of(context)!.done
+                                  : AppLocalizations.of(context)!.save,
+                              style: buttonTextStyle20,
+                            ),
                           ),
                         ),
                       )
@@ -190,14 +213,17 @@ class EditPage extends StatelessWidget {
   }
 
   Future addMemo(
-    EditModel model,
+    SettingsModel settingsModel,
+    EditModel editModel,
     BuildContext context,
   ) async {
     try {
       final navigator = Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ListPage(),
+          builder: !settingsModel.startDisplayPage
+              ? (context) => const ListPage()
+              : (context) => const GridPage(),
         ),
       );
       final dialogResult = showDialog(
@@ -210,7 +236,7 @@ class EditPage extends StatelessWidget {
           buttonText: "OK",
         ),
       );
-      await model.addMemo();
+      await editModel.addMemo();
       await dialogResult;
       await navigator;
     } catch (e) {
@@ -229,14 +255,15 @@ class EditPage extends StatelessWidget {
   }
 
   Future updateMemo(
-    EditModel model,
+    SettingsModel settingsModel,
+    EditModel editModel,
     BuildContext context,
   ) async {
     try {
       final navigator = Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ListPage(),
+          builder: (context) => const GridPage(),
         ),
       );
       final dialogResult = showDialog(
@@ -250,7 +277,7 @@ class EditPage extends StatelessWidget {
           );
         },
       );
-      await model.updateMemo(stockmemo!);
+      await editModel.updateMemo(stockmemo!);
       await dialogResult;
       await navigator;
     } catch (e) {

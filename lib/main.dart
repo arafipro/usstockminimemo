@@ -61,7 +61,10 @@ class MyApp extends StatelessWidget {
                       ? EditPage(
                           stockmemo: null,
                         )
-                      : const ListPage(),
+                      // ListPageとGridPageを設定によって切り替える
+                      : !model.startDisplayPage
+                          ? const ListPage()
+                          : const GridPage(),
                 );
               }
             },

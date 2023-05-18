@@ -37,5 +37,7 @@
 	"version":"アプリバージョン",
 
 	"startupTitle":"いきなり入力",
-	"startupSubTitle":"起動時に新規登録を表示する"
+	"startupSubTitle":"起動時に新規登録を表示する",
+
+	"listToGridTitle":"ListPageとGridPageの切り替え"
 }

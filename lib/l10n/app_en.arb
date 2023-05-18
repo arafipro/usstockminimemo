@@ -37,5 +37,7 @@
 	"version":"Application Version",
 
 	"startupTitle":"Suddenly Input",
-	"startupSubTitle":"Enter a note immediately after startup"
+	"startupSubTitle":"Enter a note immediately after startup",
+
+	"listToGridTitle":"Switch between ListPage and GridPage"
 }

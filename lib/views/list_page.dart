@@ -1,9 +1,8 @@
 import "package:usstockminimemo/constants/imports.dart";
 
 class ListPage extends StatelessWidget {
-  const ListPage({
-    super.key,
-  });
+  const ListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     const bool isButtonMode = true;
@@ -55,7 +54,6 @@ class ListPage extends StatelessWidget {
               },
             ),
           ],
-
           title: Text(
             AppLocalizations.of(context)!.appName,
             style: titleTextStyle20,
@@ -65,6 +63,7 @@ class ListPage extends StatelessWidget {
           children: [
             AdBanner(),
             Expanded(
+              // ListModelを呼び出し
               child: Consumer<ListModel>(
                 builder: (
                   BuildContext context,
@@ -93,7 +92,8 @@ class ListPage extends StatelessWidget {
                                   BuildContext context,
                                 ) {
                                   return CustomAlertDialog(
-                                    title: AppLocalizations.of(context)!.checkDelete,
+                                    title: AppLocalizations.of(context)!
+                                        .checkDelete,
                                     buttonText: "OK",
                                     onPressed: () async {
                                       Navigator.of(context).pop();

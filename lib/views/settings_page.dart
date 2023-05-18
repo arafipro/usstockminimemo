@@ -2,6 +2,7 @@ import "package:usstockminimemo/constants/imports.dart";
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
+  // バージョン情報を取得
   Future<PackageInfo> _getPackageInfo() {
     return PackageInfo.fromPlatform();
   }
@@ -15,9 +16,31 @@ class SettingsPage extends StatelessWidget {
         backgroundColor: bgColor,
         appBar: AppBar(
           backgroundColor: appBarColor,
+          automaticallyImplyLeading: false, // 戻るボタンを表示しない
           title: Text(
             AppLocalizations.of(context)!.settings,
             style: titleTextStyle20,
+          ),
+          leading: Consumer(
+            builder: (
+              BuildContext context,
+              SettingsModel model,
+              Widget? child,
+            ) =>
+                IconButton(
+              icon: const Icon(Icons.list_sharp),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: !model.startDisplayPage
+                        ? (context) => const ListPage()
+                        : (context) => const GridPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+            ),
           ),
         ),
         body: Consumer(
@@ -40,23 +63,33 @@ class SettingsPage extends StatelessWidget {
                   onChanged: (value) => model.setStartEditPage(value),
                 ),
               ),
+              ListTile(
+                title: Text(
+                  AppLocalizations.of(context)!.listToGridTitle,
+                ),
+                trailing: Switch(
+                  value: model.startDisplayPage,
+                  onChanged: (value) => model.setStartDisplayPage(value),
+                ),
+              ),
               FutureBuilder<PackageInfo>(
-                  future: _getPackageInfo(),
-                  builder: (
-                    BuildContext context,
-                    AsyncSnapshot<PackageInfo> snapshot,
-                  ) {
-                    if (snapshot.hasError) {
-                      return const Text("ERROR");
-                    } else if (!snapshot.hasData) {
-                      return const Text("Loading...");
-                    }
-                    final data = snapshot.data!;
-                    return ListTile(
-                      title: Text(AppLocalizations.of(context)!.version),
-                      subtitle: Text(data.version),
-                    );
-                  }),
+                future: _getPackageInfo(),
+                builder: (
+                  BuildContext context,
+                  AsyncSnapshot<PackageInfo> snapshot,
+                ) {
+                  if (snapshot.hasError) {
+                    return const Text("ERROR");
+                  } else if (!snapshot.hasData) {
+                    return const Text("Loading...");
+                  }
+                  final data = snapshot.data!;
+                  return ListTile(
+                    title: Text(AppLocalizations.of(context)!.version),
+                    subtitle: Text(data.version),
+                  );
+                },
+              ),
             ],
           ),
         ),
