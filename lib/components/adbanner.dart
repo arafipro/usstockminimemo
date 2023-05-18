@@ -9,11 +9,11 @@ class AdBanner extends StatelessWidget {
   });
 
   final BannerAd myBanner = BannerAd(
-    //TEST ANDROID : ca-app-pub-3940256099942544/6300978111
-    //TEST IOS : ca-app-pub-3940256099942544/2934735716
+    // TEST_ANDROID_ID
+    // TEST_IOS_ID
     adUnitId: Platform.isAndroid
-        ? dotenv.get("ANDROID_UNIT_ID")
-        : dotenv.get("IOS_UNIT_ID"),
+        ? dotenv.get("TEST_ANDROID_ID")
+        : dotenv.get("TEST_IOS_ID"),
     size: AdSize.fullBanner,
     request: const AdRequest(),
     listener: BannerAdListener(
